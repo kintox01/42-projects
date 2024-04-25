@@ -1,3 +1,15 @@
+# **************************************************************************** #
+#                                                                              #
+#                                                         :::      ::::::::    #
+#    Makefile                                           :+:      :+:    :+:    #
+#                                                     +:+ +:+         +:+      #
+#    By: dguerin <dguerin@student.42nice.fr>        +#+  +:+       +#+         #
+#                                                 +#+#+#+#+#+   +#+            #
+#    Created: 2024/04/25 16:31:11 by dguerin           #+#    #+#              #
+#    Updated: 2024/04/25 17:15:34 by dguerin          ###   ########.fr        #
+#                                                                              #
+# **************************************************************************** #
+
 LIBC =	ft_atoi.c ft_bzero.c ft_calloc.c ft_isalnum.c ft_isalpha.c \
 		ft_isascii.c ft_isdigit.c ft_isprint.c ft_memchr.c \
 		ft_memcmp.c ft_memcpy.c ft_memmove.c ft_memset.c \
@@ -7,9 +19,17 @@ LIBC =	ft_atoi.c ft_bzero.c ft_calloc.c ft_isalnum.c ft_isalpha.c \
 ADDITIONAL =	ft_itoa.c ft_putchar_fd.c ft_putendl_fd.c ft_putnbr_fd.c ft_putstr_fd.c \
 				ft_split.c ft_strjoin.c ft_strmapi.c ft_strtrim.c ft_substr.c ft_striteri.c
 
+BONUS =	ft_lstadd_back.c ft_lstadd_front.c ft_lstclear.c \
+		ft_lstdelone.c ft_lstiter.c ft_lstlast.c \
+		ft_lstmap.c ft_lstnew.c ft_lstsize.c
+
 SRCS = ${LIBC} ${ADDITIONAL}
 
+SRCSALL = ${LIBC} ${ADDITIONAL} ${BONUS}
+
 OBJS = ${SRCS:.c=.o}
+
+OBJSALL = ${SRCSALL:.c=.o} 
 
 LIB = libft.a
 
@@ -19,23 +39,38 @@ CFLAGS = -Wall -Werror -Wextra -I ./
 
 DEF_COLOR = \033[0;39m
 GREEN = \033[0;92m
+BLUE =  \x1b[36m
 
 
 .c.o:
-		${CC} ${CFLAGS} -c $< -o ${<:.c=.o}
+		@${CC} ${CFLAGS} -c $< -o ${<:.c=.o}
+		@echo "$(BLUE)┌───────────────────────────┐$(DEF_COLOR)"
+		@echo "$(BLUE) compiled! $<  $(DEF_COLOR)"
+		@echo "$(BLUE)└───────────────────────────┘$(DEF_COLOR)"
 
 ${LIB}:	${OBJS}
-		ar -rsc ${LIB} ${OBJS}
-		@echo "$(GREEN)***************\nLibft compiled!\n***************$(DEF_COLOR)"
+		@ar -rsc ${LIB} ${OBJS}
+		@echo "$(GREEN)╔═══════════════╗$(DEF_COLOR)"
+		@echo "$(GREEN)║Libft compiled!║$(DEF_COLOR)"
+		@echo "$(GREEN)╚═══════════════╝$(DEF_COLOR)"
+
+
+bonus:	${OBJSALL}
+		@ar -rsc ${LIB} ${OBJSALL}
+		@echo "$(GREEN)╔═══════════════╗$(DEF_COLOR)"
+		@echo "$(GREEN)║Bonus compiled!║$(DEF_COLOR)"
+		@echo "$(GREEN)╚═══════════════╝$(DEF_COLOR)"
 
 all: 	${LIB}
 
 clean:	
-		rm -f ${OBJS}
+		@rm -f ${OBJSALL}
 
 fclean:	clean;
-		rm -f ${LIB}
-		@echo "$(GREEN)**************\nLibft cleaned!\n**************$(DEF_COLOR)"
+		@rm -f ${LIB}
+		@echo "$(GREEN)╔═══════════════╗$(DEF_COLOR)"
+		@echo "$(GREEN)║Libft  cleaned!║$(DEF_COLOR)"
+		@echo "$(GREEN)╚═══════════════╝$(DEF_COLOR)"
 
 
 re:	fclean all
