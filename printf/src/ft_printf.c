@@ -25,10 +25,8 @@ static int	ft_formats(va_list args, const char format)
 		return (ft_putnbr(args));
 	else if (format == 'u')
 		return (ft_putunsigned(args));
-	else if (format == 'x')
-		return (ft_puthex(args));
-	else if (format == 'X')
-		return (ft_putupperhex(args));
+	else if (format == 'x' || format == 'X')
+		return (ft_print_hex(args, format));
 	else if (format == '%')
 		return (ft_putpercent());
 	return (0);

@@ -22,6 +22,11 @@ int	ft_putptr(va_list params)
 	size = 0;
 	ptr = (void *) va_arg(params, void *);
 	adress = (unsigned long) ptr;
+	if (adress == 0x0)
+	{
+		write(1, "(nil)", 5);
+		return (5);
+	}
 	ft_putstr_fd("0x", 1);
 	ft_putunbr_base(adress, "0123456789abcdef");
 	if (adress == 0)

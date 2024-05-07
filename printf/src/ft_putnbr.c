@@ -15,18 +15,21 @@
 
 int	ft_putnbr(va_list params)
 {
-	unsigned int	udecimal;
-	size_t			size;
+	size_t	size;
+	int		i;
 
 	size = 0;
-	udecimal = (unsigned int) va_arg(params, unsigned int);
-	ft_putunbr_fd(udecimal, 1);
-	if (udecimal == 0)
+	i = (int) va_arg(params, int);
+	ft_putnbr_fd(i, 1);
+	if (i == 0)
 		return (1);
-	while (udecimal != 0)
+	if (i < 0)
+		size++;
+	while (i != 0)
 	{
-		udecimal /= 10;
+		i /= 10;
 		size++;
 	}
 	return (size);
 }
+
