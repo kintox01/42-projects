@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "../../libft.h"
 
 static void	ft_isneg(int *n, int *neg, int *tmp)
 {

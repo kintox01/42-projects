@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "../../libft.h"
 
 static void	print_nb(long nb, int fd)
 {

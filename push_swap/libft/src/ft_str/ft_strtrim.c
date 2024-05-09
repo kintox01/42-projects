@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "../../libft.h"
 
 static char	*find_begin(char const *s1, char const *set)
 {

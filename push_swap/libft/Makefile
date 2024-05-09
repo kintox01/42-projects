@@ -88,7 +88,4 @@ fclean:		clean
 re:			fclean all
 			@echo "$(GREEN)Cleaned and rebuilt everything for libft!$(DEF_COLOR)"
 
-norm:
-	@norminette $(SRCS) $(INCLUDES) | grep -v Norme -B1 || true
-
 .PHONY:		all clean fclean re norm

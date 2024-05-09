@@ -13,7 +13,7 @@
 #ifndef PUSH_SWAP_H
 # define PUSH_SWAP_H
 
-#include "libft.h"
+#include "../libft/libft.h"
 
 // Stack
 typedef struct s_list
@@ -37,7 +37,10 @@ int	rr(t_list **stack_a, t_list **stack_b);
 int	rra(t_list **stack_a);
 int	rrb(t_list **stack_b);
 int	rrr(t_list **stack_a, t_list **stack_b);
-int reverse_rotate(t_list **stack);
+int	swap(t_list **stack);
+int	push(t_list **stack_to, t_list **stack_from);
+int	rotate(t_list **stack);
+int	reverseRotate(t_list **stack);
 
 // Utils
 
